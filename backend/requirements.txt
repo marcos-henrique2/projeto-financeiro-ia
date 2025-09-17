@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+langchain
+langgraph
+openai
+pandas
+numpy
+openpyxl
+xlrd
+pydantic
+python-dotenv
+sqlalchemy
+reportlab
+kaleido
+plotly
+python-multipart

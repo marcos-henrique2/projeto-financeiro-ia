@@ -1,0 +1,58 @@
+# Arquivo .gitignore para o projeto de Análise Financeira com IA
+
+# Ignorar arquivos de configuração de ambiente
+# NUNCA envie seus segredos (como a OPENAI_API_KEY) para o GitHub!
+.env
+.env*.local
+
+# --- Geral ---
+# Ignorar logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar arquivos de configuração de editores de código
+.vscode/
+.idea/
+
+# Ignorar arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+
+# --- Backend - Python ---
+
+# Ignorar o ambiente virtual
+# Esta pasta contém todas as bibliotecas Python instaladas e é muito pesada
+backend/.venv/
+
+# Ignorar o banco de dados SQLite local
+# Contém dados temporários dos seus testes
+backend/financeiro.db
+backend/financeiro.db-journal # Arquivo temporário do SQLite
+
+# Ignorar caches do Python
+__pycache__/
+*.pyc
+
+# Ignorar caches e relatórios de testes do Pytest
+.pytest_cache/
+.coverage
+
+
+# --- Frontend - Next.js / Node.js ---
+
+# Ignorar a pasta de dependências do Node.js
+# De longe a pasta mais pesada do projeto. Pode ser recriada com 'npm install'
+frontend/node_modules/
+
+# Ignorar a pasta de build do Next.js
+frontend/.next/
+
+# Ignorar arquivos de build de exportação estática
+frontend/out/
+
+# Ignorar logs de crash do Next.js e Turbopack
+frontend/*.log
+frontend/logs

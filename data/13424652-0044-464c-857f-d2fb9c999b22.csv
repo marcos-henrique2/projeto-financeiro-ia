@@ -1,0 +1,15 @@
+data,tipo,categoria,descricao,valor
+15/01/2024,Receita,Vendas,"Venda do produto A","1.500,75"
+20/01/2024,Despesa,Marketing,"Campanha Google Ads","-350,50"
+20/01/2024,Despesa,Marketing,"Campanha Google Ads","-350,50"
+01-25-2024,Receita,Serviços,"Consultoria de UX","3.200,00"
+28/01/2024,Despesa,,"Aluguel do escritório","-2.000,00"
+05/02/2024,Receita,Vendas,"Venda do produto B","850.99"
+10/02/2024,Despesa,Salários,"Pagamento de salários","-8.500,00"
+15/02/2024,Despesa,Fornecedores,"Compra de matéria-prima","-1.234,56"
+28/02/2024,Despesa,Infraestrutura,"Conta de luz","-450.00"
+10/03/2024,Receita,Vendas,"Venda do produto A","1.800,25"
+12/03/2024,Despesa,Infraestrutura,"Conta de internet",
+15/03/2024,Despesa,Fornecedores,"Compra de embalagens","-320,10"
+20/03/2024,Receita,Serviços,,"5.000,00"
+25/03/2024,Despesa,Salários,"Pagamento de salários","9.000,00"
