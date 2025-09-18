@@ -1,14 +1,16 @@
-// frontend/app/(dashboard)/kpis/page.tsx
+// Página de KPIs: exibe indicadores de desempenho financeiros em cartões.  
+// Carrega os dados automaticamente quando há um ID de sessão ativo.
 
 'use client';
 
 import { useEffect } from 'react';
 import { useAnalysisStore } from '@/store/analysisStore';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 export default function KpisPage() {
   const { sessionId, kpis, isLoading, error, fetchKpis } = useAnalysisStore();
 
+  // Quando o componente monta ou quando dependências mudam, busca as KPIs se necessário
   useEffect(() => {
     if (sessionId && !kpis) {
       fetchKpis();
@@ -16,38 +18,36 @@ export default function KpisPage() {
   }, [sessionId, kpis, fetchKpis]);
 
   if (!sessionId) {
-    return (
-      <div className="container mx-auto p-8">
-        <p>Por favor, faça o upload de um arquivo primeiro.</p>
-      </div>
-    );
+    return <p className="p-4">Por favor, faça o upload de um arquivo primeiro.</p>;
   }
 
   if (isLoading) {
-    return <div className="container mx-auto p-8"><p>Calculando KPIs...</p></div>;
+    return <p className="p-4">Calculando KPIs...</p>;
   }
 
   if (error) {
-    return <div className="container mx-auto p-8"><p className="text-red-500">Erro: {error}</p></div>;
+    return <p className="p-4 text-red-500">Erro: {error}</p>;
   }
 
   return (
-    <div className="container mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-4">Dashboard de KPIs</h2>
-      <div className="grid gap-4 md-grid-cols-2 lg:grid-cols-4">
-        {/* PASSO 1: Removemos a anotação de tipo daqui */}
-        {kpis && Object.entries(kpis).map(([title, value]) => (
-          <Card key={title}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* PASSO 2: Adicionamos a "afirmação de tipo" (as string) aqui */}
-              <div className="text-2xl font-bold">{value as string}</div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+    <div className="container mx-auto py-8">
+      <h2 className="text-2xl font-bold mb-6">Dashboard de KPIs</h2>
+      {kpis ? (
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {Object.entries(kpis).map(([title, value]) => (
+            <Card key={title}>
+              <CardHeader>
+                <CardTitle>{title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xl font-semibold">{String(value)}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <p>Nenhuma KPI encontrada.</p>
+      )}
     </div>
   );
 }
